@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./js/scripts.js" type="module"></script>
+    <link rel="stylesheet" href="./css/estilos.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header id="header">
+   <!-- <img src="./assets/encabezado.jpg" alt="foto encabezado">-->
+      <nav>
+        <ul>
+            <li><a href="#">Nosotros</a></li>
+            <li><a href="#">Anuncios</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+        </nav>
+    </header> 
+    <div class="container">
+      <h1>Adminitracion</h1>
+      <!--  <div class="formulario"> -->
+      <fieldset>
+        <legend>Informacion del anuncio</legend>
+      <form action="enviar datos">
+        <input type="hidden" name="id" />
+        <div id="formulario">
+        <input
+          type="text"
+          name="titulo"
+          placeholder="Titulo"
+          required
+        />
+        <select name="transaccion" id="Transaccion">
+          <option value="venta">Venta</option>
+          <option value="alquiler">Alquiler</option>
+          <option value="permuta">Permuta</option>
+        </select>
+        <input
+          type="text"
+          name="descripcion"
+          placeholder="Descripcion"
+          required
+        />
+          <input
+          type="number"
+          name="precio"
+          placeholder="Ingrese el precio"
+          step="0.01"
+          required
+          />
+        <input
+          type="number"
+          name="puertas"
+          placeholder="Puertas"
+          required
+        />
+          <input
+          type="number"
+          name="kms"
+          placeholder="KMs"
+          required
+          />
+        <input
+          type="number"
+          name="potencia"
+          placeholder="Potencia"
+          required
+        />
+      </div>
+        </fieldset>
+        <input type="submit" id="btnSubmit" value="Guardar" />
+        <input type="button" id="btnEliminar" class="oculto" value="Eliminar" />
+        
+      </form>
+      <div id="spinner-container"></div>
+      <!--</div>-->
+      <!--<button id="btnlista">Crear Lista</button>-->
+      <div id="divLista"></div>
+    </div>
+    <footer id="footer">
+      <nav><ul>
+          <li><a href="#">Nosotros</a></li>
+          <li><a href="#">Anuncios</a></li>
+          <li><a href="#">Blog</a></li>
+          <li><a href="#">Contacto</a></li>
+      </ul>
+      <p>Todos los derechos reservados <date>2020</date> &copy;</p>
+      </nav>
+  </footer>
+  </body>
+</html>

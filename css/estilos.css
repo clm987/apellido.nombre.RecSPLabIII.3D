@@ -1,0 +1,81 @@
+.container{
+    max-width:600px;
+    margin: auto;
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    align-items: center;
+}
+
+table
+{
+    border-collapse: collapse;
+}
+
+table, td{
+    border: 1px solid white;
+    background-color: beige;
+
+}
+
+th{
+    border: 2px solid black;
+    text-align: center;
+    background-color: seashell;
+}
+
+form{
+    margin-bottom: 2rem;
+}
+
+.oculto{
+    display: none;
+}
+
+.visible{
+    display: block;
+}
+
+#imagenDeFondo{
+    max-width: 100px;
+    max-height: 100px;
+}
+
+h1{
+    color: black;
+}
+
+fieldset{
+    margin-top: 2rem;
+
+}
+
+legend{
+    font-size:inherit;
+}
+
+#btnSubmit
+{
+    margin-bottom: 2rem;
+    background-position: 8px 5px;
+    background-repeat: no-repeat;
+    background-color: steelblue;
+    color: white;
+    padding: 5px 30px;
+}
+
+#header{
+    display:flex;
+    align-items:stretch;
+    justify-content:right;
+    flex-direction:row;
+    align-items:flex-end;
+    background-color:burlywood;
+}
+
+#footer{
+    display: flex;
+background-color:burlywood ;
+justify-content: space-between;
+}
+
