@@ -1,47 +1,32 @@
 import { Anuncio_Auto } from "./Anuncio_Auto.js";
 let boton = null;
-//let anuncios = JSON.parse(localStorage.getItem("lista")) || [];
 let anuncios = [];
 let anuncionsFiltrados = [];
+let checksColumnas = [];
 
 window.addEventListener("DOMContentLoaded", () => {
- // TraerTodoAjax();
  TraerTodoFetch();
   document.forms[0].addEventListener("submit", handlerSubmit);
   document.addEventListener("click", handlerClick);
-  // let ckecks = document.getElementById("divChecks");
-  // ckecks.addEventListener("change", handlerChecks);
+  document.getElementById("outResultado").value = "N/A";
   let selects = document.getElementById("filtroOperacion");
   selects.addEventListener("change", handlerFiltro);
-  /* if (anuncios.length > 0) {
-    console.log("tiene mas de uno");
-    handlerClickCargar(anuncios);
-    let ckecks = document.getElementById("divChecks");
-    ckecks.addEventListener("change", handlerChecks);
-  }*/
 });
 
 function handlerChecks(e) {
   handlerClickCargar(anuncios);
+  document.getElementById("outResultado").value = "N/A";
+  guardarSeleccion();
+  
 }
 
 function handlerFiltro(e) {
   let indicador = document.getElementById("filtroIndicador");
   indicador.addEventListener("change", filtrarRows)
- //filtrarRows();
-  //handlerClickCargar(anuncios);
 }
 
 function handlerClickCargar(e) {
   renderizarLista(crearTabla(anuncios), document.getElementById("divLista"));
-}
-
-function handlerClickBorrar(e) {
-  renderizarLista(null, document.getElementById("divLista"));
-  const emisor = e.target;
-  emisor.textContent = "Cargar Lista";
-  emisor.removeEventListener("click", handlerClickBorrar);
-  emisor.addEventListener("click", handlerClickCargar);
 }
 
 function renderizarLista(lista, contenedor) {
@@ -128,12 +113,8 @@ function handlerClick(e) {
           "Confirma que desea eliminar el anuncio: " +
             document.forms[0].titulo.value
         )
-      ) {
-       // let index = anuncios.findIndex((el) => el.id == idEliminar);
-       // anuncios.splice(index, 1);
-        EliminarAjax(idEliminar);
-        //EliminarFetch(idEliminar);
-        //almacenarDatos(anuncios);
+      ) {;
+        EliminarFetch(idEliminar);
         limpiarFormulario(document.forms[0]);
         resetBotonesForm();
         handlerClickCargar();
@@ -171,8 +152,7 @@ function handlerSubmit(e) {
     );
     agregarSpinner();
     setTimeout(() => {
-    //  modificarAnuncio(auxAnuncioAModificar);
-      ModificarAjax(auxAnuncioAModificar);
+      modificarAjax(auxAnuncioAModificar);
       eliminarSpinner();
       handlerClickCargar();
     }, 3000);
@@ -184,7 +164,6 @@ function handlerSubmit(e) {
     const auxPuertas = auxFormulario.puertas.value;
     const auxKms = auxFormulario.kms.value;
     const auxPotencia = auxFormulario.potencia.value;
-    //const auxPotencia = auxFormulario.potencia.value;
     const auxAnuncio = new Anuncio_Auto(
       Date.now(),
       auxTitulo,
@@ -197,8 +176,7 @@ function handlerSubmit(e) {
     );
     agregarSpinner();
     setTimeout(() => {
-      //altaAnuncio(auxAnuncio);
-      AltaAjax(auxAnuncio);
+      altaAjax(auxAnuncio);
       eliminarSpinner();
       handlerClickCargar();
     }, 3000);
@@ -221,20 +199,6 @@ function eliminarSpinner() {
 
 function almacenarDatos(data) {
   localStorage.setItem("lista", JSON.stringify(data));
-}
-
-function modificarAnuncio(pEdit) {
-  let index = anuncios.findIndex((p) => {
-    return p.id == pEdit.id;
-  });
-  anuncios.splice(index, 1, pEdit);
-  almacenarDatos(anuncios);
-}
-
-function altaAnuncio(auxAnuncio) {
-  anuncios.push(auxAnuncio);
-  almacenarDatos(anuncios);
-  handlerClickCargar();
 }
 
 function limpiarFormulario(frm) {
@@ -270,49 +234,18 @@ function cambiarBotonesForm() {
   document.getElementById("btnEliminar").classList.replace("oculto", "visible");
 }
 
-function TraerTodoAjax() {
-  // AgregarSpinner();
-
-  const xhr = new XMLHttpRequest();
-  xhr.onreadystatechange = () => {
-    if (xhr.readyState == 4) {
-      if (xhr.status >= 200 && xhr.status < 299) {
-        anuncios = JSON.parse(xhr.responseText);
-      //  console.log(anuncios);
-      //  console.log("el largo es: " + anuncios.length);
-      } else {
-        const statusText = xhr.statusText || "Ocurrio un error";
-
-        console.error(`Error: ${xhr.status} : ${statusText}`);
-      }
-      if (anuncios.length > 0) {
-        handlerClickCargar(anuncios);
-        let ckecks = document.getElementById("divChecks");
-        ckecks.addEventListener("change", handlerChecks);
-      }
-    }
-  };
-  xhr.open("GET", "http://localhost:3000/anuncios");
-  xhr.send();
-}
-
-function AltaAjax(nuevoAnuncio) {
+function altaAjax(nuevoAnuncio) {
   const xhr = new XMLHttpRequest();
   xhr.onreadystatechange = () => {
     if (xhr.readyState == 4) {
       if (xhr.status >= 200 && xhr.status < 299) 
       {
        anuncios.push(JSON.parse(xhr.responseText));
-      //  console.log(anuncios);
-    //    console.log("el largo es: " + anuncios.length);
             if (anuncios.length > 0) 
             {
-            // handlerLoadList(anuncios);
               handlerClickCargar(anuncios);
               let ckecks = document.getElementById("divChecks");
               ckecks.addEventListener("change", handlerChecks);
-     //         console.log(anuncios);
-      //        console.log("el largo es: " + anuncios.length);
             }
       } else {
         const statusText = xhr.statusText || "Ocurrio un error";
@@ -325,7 +258,7 @@ function AltaAjax(nuevoAnuncio) {
   xhr.send(JSON.stringify(nuevoAnuncio));
 }
 
-function ModificarAjax(AnuncioEditado) {
+function modificarAjax(AnuncioEditado) {
   let id = AnuncioEditado.id;
   let index = -1;
   const xhr = new XMLHttpRequest();
@@ -365,8 +298,6 @@ function EliminarAjax(id) {
         const statusText = xhr.statusText || "Ocurrio un error";
         console.error(`Error: ${xhr.status} : ${statusText}`);
       }
-
-  //    EliminarSpinner();
     }
   };
 
@@ -375,54 +306,44 @@ function EliminarAjax(id) {
 }
 
 function TraerTodoFetch() {
- // AgregarSpinner();
+ restaurarChecks();
   fetch("http://localhost:3000/anuncios")
     .then((res) => {
       return res.ok ? res.json() : Promise.reject(res);
     })
     .then((data) => {
       anuncios = data;
-     /* let Promedio = document.querySelector("#promedio");
-      let sum = anuncios.reduce(function (total, currentValue) {
-        return total + parseInt(currentValue.precio, 10);
-      }, 0);
-      Promedio.value = sum / anuncios.length;*/
       if (anuncios.length > 0) {
-      //  handlerLoadList(anuncios);
       handlerClickCargar(anuncios);
       let ckecks = document.getElementById("divChecks");
         ckecks.addEventListener("change", handlerChecks);
-   //   let selectoper = document.getElementById("operacion");
-   //   selectoper.addEventListener("change", handlerFiltro);
+   
       }
-      console.log(anuncios);
     })
     .catch((err) => {
       console.error(`Error: ${err.status} : ${err.statusText}`);
     })
     .finally(() => {
-     // EliminarSpinner();
     });
 }
 
 function EliminarFetch(id) {
+  agregarSpinner();
   fetch(`http://localhost:3000/anuncios/${id}`, { method: "DELETE" })
     .then((res) => {
       return res.ok ? res.json() : Promise.reject(res);
     })
     .then((data) => {
       anuncios = data;
-     // handlerLoadList();
       handlerClickCargar(anuncios);
       let ckecks = document.getElementById("divChecks");
         ckecks.addEventListener("change", handlerChecks);
-      console.log(anuncios);
     })
     .catch((err) => {
       console.error(`Error: ${err.status} : ${err.statusText}`);
     })
     .finally(() => {
-   //   EliminarSpinner();
+      eliminarSpinner();
     });
 }
 
@@ -438,13 +359,43 @@ switch (select) {
     renderizarLista(crearTabla(anuncionsFiltrados), document.getElementById("divLista"));
     if (indicador == "promedio") 
     {
-      console.log("calculo el promedio");
+      let suma = 0;
+      let sumaPotencia = 0;
+      let precios =[];
+      let potencias = [];
+      let prom = 0;
+      let promPotencia = 0;
+      precios = anuncionsFiltrados.map(function (anuncio) {
+ 
+        return parseInt(anuncio.precio); 
+     
+    });
+      suma = precios.reduce((p, a) => p + a, 0);
+
+    prom = suma / precios.length;
+    document.getElementById("outResultado").value = prom;
+    potencias = anuncionsFiltrados.map(function (anuncio) {
+ 
+      return parseInt(anuncio.potencia); 
+   
+  });
+  sumaPotencia = potencias.reduce((a, b) => a + b, 0);
+  promPotencia = sumaPotencia / potencias.length;
+  console.log(promPotencia);
+  document.getElementById("resultadoPotencia").value = promPotencia;
     }else if(indicador == "minimo")
     {
-      console.log("calculo el minimo");
+      let minimo = 0;
+      let precios =[];
+      precios = anuncionsFiltrados.map(function (anuncio) {
+ 
+        return parseInt(anuncio.precio); 
+     
+    });
+    minimo = Math.min.apply(null, precios);
+    document.getElementById("outResultado").value = minimo;
     }else
     {
-      console.log("calculo el maximo");
       let maximo = 0;
       let precios =[];
       precios = anuncionsFiltrados.map(function (anuncio) {
@@ -459,13 +410,91 @@ switch (select) {
   case "alquiler":
     anuncionsFiltrados = anuncios.filter((p)=> p.transaccion == "alquiler");
     renderizarLista(crearTabla(anuncionsFiltrados), document.getElementById("divLista"));
+    if (indicador == "promedio") 
+    {
+      let suma = 0;
+      let sumaPotencia = 0;
+      let precios =[];
+      let potencias = [];
+      let prom = 0;
+      let promPotencia = 0;
+      precios = anuncionsFiltrados.map(function (anuncio) {
+ 
+        return parseInt(anuncio.precio); 
+     
+    });
+      suma = precios.reduce((a, b) => a + b, 0);
+    prom = suma / precios.length;
+    document.getElementById("outResultado").value = prom;
+
+    potencias = anuncionsFiltrados.map(function (anuncio) {
+ 
+      return parseInt(anuncio.potencia); 
+   
+  });
+  sumaPotencia = potencias.reduce((a, b) => a + b, 0);
+  promPotencia = sumaPotencia / potencias.length;
+  console.log(promPotencia);
+  document.getElementById("resultadoPotencia").value = promPotencia;
+    }else if(indicador == "minimo")
+    {
+      let minimo = 0;
+      let precios =[];
+      precios = anuncionsFiltrados.map(function (anuncio) {
+ 
+        return parseInt(anuncio.precio); 
+     
+    });
+    minimo = Math.min.apply(null, precios);
+    document.getElementById("outResultado").value = minimo;
+    }else
+    {
+      let maximo = 0;
+      let precios =[];
+      precios = anuncionsFiltrados.map(function (anuncio) {
+ 
+        return parseInt(anuncio.precio); 
+     
+    });
+    maximo = Math.max.apply(null, precios);
+    document.getElementById("outResultado").value = maximo
+    }
+
       break;
-  case "permuta":
-    anuncionsFiltrados = anuncios.filter((p)=> p.transaccion == "alquiler");
-    renderizarLista(crearTabla(anuncionsFiltrados), document.getElementById("divLista"));
-    break;
   default:
+    document.getElementById("outResultado").value = "N/A"
     break;
 }
 
+}
+
+function guardarSeleccion(){
+  let checkBoxesSelec = document.querySelectorAll("input[type=checkbox]");
+  let idChecks = [];
+  checkBoxesSelec.forEach((element) => {
+    if (element.checked) {
+     idChecks.push(element.id);
+    }
+  });
+  almacenarDatos(idChecks);
+}
+
+function restaurarChecks(){
+  let checkBoxesSelec = document.querySelectorAll("input[type=checkbox]");
+  checkBoxesSelec.forEach((element) => {
+    if (element.checked == false) {
+      let ids = [];
+      ids = localStorage.getItem("lista");
+      let arrayIds = ids.split(",");
+      arrayIds.forEach((checkId)=>{
+        if(element.id == checkId){
+          console.log("element.id :" + element.id);
+          console.log("checkId :" + checkId);
+          element.checked = true;
+        }
+      })
+    }
+  });
+
+  
 }

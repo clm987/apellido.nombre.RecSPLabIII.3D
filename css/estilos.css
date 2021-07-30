@@ -81,16 +81,12 @@ h1 {
     margin-right: 3rem;
     align-items: stretch;
   }
-}
 
 #divChecks {
   justify-content: center;
   margin-bottom: 1rem;
 }
 
-/*.titulosForm {
-  margin-right: 1rem;
-}*/
 
 #nav {
   margin-top: 3rem;

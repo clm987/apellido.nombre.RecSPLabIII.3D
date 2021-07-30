@@ -1,16 +1,6 @@
 {
   "anuncios": [
     {
-      "id": 1626818627222,
-      "titulo": "Primer Anuncio",
-      "transaccion": "venta",
-      "descripcion": "Primera Venta",
-      "precio": 111,
-      "puertas": 111,
-      "kms": 111,
-      "potencia": 11
-    },
-    {
       "id": 1626821260084,
       "titulo": "Segundo anuncio",
       "transaccion": "alquiler",
@@ -102,23 +92,23 @@
     },
     {
       "id": 1627600621789,
-      "titulo": "Prueba modificacion",
+      "titulo": "Prueba modificacion nueva",
       "transaccion": "alquiler",
       "descripcion": "un alquiler",
-      "precio": 999,
-      "puertas": 33,
-      "kms": 555,
-      "potencia": 33
+      "precio": "999",
+      "puertas": "33",
+      "kms": "555",
+      "potencia": "33"
     },
     {
-      "id": 1627601455843,
-      "titulo": "AltaAjax4",
-      "transaccion": "alquiler",
-      "descripcion": "un alquiler",
-      "precio": 444,
-      "puertas": 444,
-      "kms": 444,
-      "potencia": 444
+      "id": 1627688116046,
+      "titulo": "prueba alta",
+      "transaccion": "permuta",
+      "descripcion": "11",
+      "precio": "33",
+      "puertas": "3",
+      "kms": "444",
+      "potencia": "4"
     }
   ]
 }
