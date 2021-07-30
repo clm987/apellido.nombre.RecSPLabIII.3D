@@ -1,0 +1,124 @@
+{
+  "anuncios": [
+    {
+      "id": 1626818627222,
+      "titulo": "Primer Anuncio",
+      "transaccion": "venta",
+      "descripcion": "Primera Venta",
+      "precio": 111,
+      "puertas": 111,
+      "kms": 111,
+      "potencia": 11
+    },
+    {
+      "id": 1626821260084,
+      "titulo": "Segundo anuncio",
+      "transaccion": "alquiler",
+      "descripcion": "un alquiler",
+      "puertas": 111,
+      "kms": 111,
+      "precio": 111,
+      "potencia": 11
+    },
+    {
+      "id": 1626821399521,
+      "titulo": "Tercer Anuncio",
+      "transaccion": "permuta",
+      "descripcion": "Una Permuta",
+      "puertas": 111,
+      "kms": 111,
+      "precio": 111,
+      "potencia": 11
+    },
+    {
+      "id": 1626821558223,
+      "titulo": "Cuarto Anuncio",
+      "transaccion": "venta",
+      "descripcion": "Otra Venta",
+      "puertas": 111,
+      "kms": 111,
+      "precio": 111,
+      "potencia": 11
+    },
+    {
+      "id": 1626821613974,
+      "titulo": "Quinto Anuncio",
+      "transaccion": "alquiler",
+      "descripcion": "Otro alquiler",
+      "puertas": 111,
+      "kms": 111,
+      "precio": 111,
+      "potencia": 11
+    },
+    {
+      "id": 1626829413517,
+      "titulo": "Sexto Anuncio",
+      "transaccion": "permuta",
+      "descripcion": "Otra Permuta",
+      "puertas": 111,
+      "kms": 111,
+      "precio": 111,
+      "potencia": 11
+    },
+    {
+      "id": 1626830256508,
+      "titulo": "Septimo Anuncio",
+      "transaccion": "venta",
+      "descripcion": "Otra Venta",
+      "puertas": 111,
+      "kms": 111,
+      "precio": 111,
+      "potencia": 11
+    },
+    {
+      "id": 1626830513216,
+      "titulo": "Octavo Anuncio",
+      "transaccion": "alquiler",
+      "descripcion": "Otro Alquiler",
+      "puertas": 111,
+      "kms": 111,
+      "precio": 111,
+      "potencia": 11
+    },
+    {
+      "id": 1626830733111,
+      "titulo": "Noveno Anuncio",
+      "transaccion": "permuta",
+      "descripcion": "Otra Permuta",
+      "puertas": 111,
+      "kms": 111,
+      "precio": 111,
+      "potencia": 11
+    },
+    {
+      "id": 1626831841989,
+      "titulo": "Decimo Anuncio",
+      "transaccion": "venta",
+      "descripcion": "Otra Venta",
+      "puertas": 111,
+      "kms": 111,
+      "precio": 111,
+      "potencia": 11
+    },
+    {
+      "id": 1627600621789,
+      "titulo": "Prueba modificacion",
+      "transaccion": "alquiler",
+      "descripcion": "un alquiler",
+      "precio": 999,
+      "puertas": 33,
+      "kms": 555,
+      "potencia": 33
+    },
+    {
+      "id": 1627601455843,
+      "titulo": "AltaAjax4",
+      "transaccion": "alquiler",
+      "descripcion": "un alquiler",
+      "precio": 444,
+      "puertas": 444,
+      "kms": 444,
+      "potencia": 444
+    }
+  ]
+}

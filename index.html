@@ -1,95 +1,170 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./js/scripts.js" type="module"></script>
-    <link rel="stylesheet" href="./css/estilos.css" />
-    <title>Document</title>
-  </head>
-  <body>
-    <header id="header">
-   <!-- <img src="./assets/encabezado.jpg" alt="foto encabezado">-->
-      <nav>
-        <ul>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="./js/scripts.js" type="module"></script>
+  <link rel="stylesheet" href="./css/estilos.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="icon" href="./assets/favicon.ico" type="image/x-icon">
+  <!----   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>--->
+
+  <title>Document</title>
+</head>
+
+<body>
+  <header id="header">
+    <div class="row">
+      <div class="col-md-6">
+        <img class="Logo" src="./assets/LogoCar.png" alt="logo">
+      </div>
+      <div class="col-md-6">
+        <nav id="nav">
+          <ul id="ul-nav">
             <li><a href="#">Nosotros</a></li>
             <li><a href="#">Anuncios</a></li>
             <li><a href="#">Blog</a></li>
             <li><a href="#">Contacto</a></li>
-        </ul>
+          </ul>
         </nav>
-    </header> 
-    <div class="container">
-      <h1>Adminitracion</h1>
-      <!--  <div class="formulario"> -->
-      <fieldset>
-        <legend>Informacion del anuncio</legend>
-      <form action="enviar datos">
-        <input type="hidden" name="id" />
-        <div id="formulario">
-        <input
-          type="text"
-          name="titulo"
-          placeholder="Titulo"
-          required
-        />
-        <select name="transaccion" id="Transaccion">
-          <option value="venta">Venta</option>
-          <option value="alquiler">Alquiler</option>
-          <option value="permuta">Permuta</option>
-        </select>
-        <input
-          type="text"
-          name="descripcion"
-          placeholder="Descripcion"
-          required
-        />
-          <input
-          type="number"
-          name="precio"
-          placeholder="Ingrese el precio"
-          step="0.01"
-          required
-          />
-        <input
-          type="number"
-          name="puertas"
-          placeholder="Puertas"
-          required
-        />
-          <input
-          type="number"
-          name="kms"
-          placeholder="KMs"
-          required
-          />
-        <input
-          type="number"
-          name="potencia"
-          placeholder="Potencia"
-          required
-        />
       </div>
-        </fieldset>
-        <input type="submit" id="btnSubmit" value="Guardar" />
-        <input type="button" id="btnEliminar" class="oculto" value="Eliminar" />
-        
-      </form>
-      <div id="spinner-container"></div>
-      <!--</div>-->
-      <!--<button id="btnlista">Crear Lista</button>-->
-      <div id="divLista"></div>
     </div>
-    <footer id="footer">
-      <nav><ul>
-          <li><a href="#">Nosotros</a></li>
-          <li><a href="#">Anuncios</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Contacto</a></li>
+  </header>
+  <!-- <div class="container">-->
+  <div class="row-md-12">
+    <h1>Administración</h1>
+  </div>
+  <div class="row-md-12">
+    <img class="autos" src="./assets/hero-cars.png" alt="autos">
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-auto mt-5">
+        <div class="form-group row">
+          <fieldset class="border p-2">
+            <legend class="w-auto">Informacion del anuncio</legend>
+            <form action="enviar datos">
+              <ul>
+                <input type="hidden" name="id" />
+                <li>
+                  <label for="titulo" class="col-sm-2 col-form-label">Titulo:</label>
+                  <input class="form-control" type="text" name="titulo" placeholder="Titulo" required />
+                </li>
+                <li>
+                  <label for="transaccion" class="col-sm-2 col-form-label">Transacción:</label>
+                  <select name="transaccion" id="Transaccion" class="form-control">
+                    <option value="venta">Venta</option>
+                    <option value="alquiler">Alquiler</option>
+                    <option value="permuta">Permuta</option>
+                  </select>
+                </li>
+                <li>
+                  <label for="descripcion" class="col-sm-2 col-form-label">Descripción:</label>
+                  <input class="form-control" type="text" name="descripcion" placeholder="Descripcion" required />
+                </li>
+                <li>
+                  <label for="precio" class="col-sm-2 col-form-label">Precio:</label>
+                  <input class="form-control" type="number" name="precio" placeholder="Ingrese el precio" step="0.01"
+                    required />
+                </li>
+                <li>
+                  <label for="puertas" class="col-sm-2 col-form-label">Puertas:</label>
+                  <input class="form-control" type="number" name="puertas" placeholder="Puertas" required />
+                </li>
+                <li>
+                  <label for="kms" class="col-sm-2 col-form-label">KMs:</label>
+                  <input class="form-control" type="number" name="kms" placeholder="KMs" required />
+                </li>
+                <li>
+                  <label for="potencia" class="col-sm-2 col-form-label">Potencia:</label>
+                  <input class="form-control" type="number" name="potencia" placeholder="Potencia" required />
+                </li>
+                <li>
+                  <label for="foto" class="col-sm-2 col-form-label">Foto:</label>
+                  <input class="form-control-file" type="file" name="foto" id="foto">
+                </li>
+                <div class="
+                      h-100 row m-0 text-center aling-items-center justify-content-center">
+                  <div class="row justify-content-center">
+                    <input class="btn btn-primary" type="submit" id="btnSubmit" value="Guardar" />
+                    <input type="button" id="btnEliminar" class="oculto" value="Eliminar" />
+                  </div>
+                </div>
+              </ul>
+            </form>
+          </fieldset>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-auto mt-5">
+        <div id="divChecks" class="columnas">
+          <p class="h5">Seleccione las columnas a mostrar:</p>
+          <label><input type="checkbox" id="titulo" Checked="checked">Titulo</label>
+          <label><input type="checkbox" id="transaccion">Transacción</label>
+          <label><input type="checkbox" id="descripcion">Descripcion</label>
+          <label><input type="checkbox" id="precio">Precio</label>
+          <label><input type="checkbox" id="puertas">Cantidad de Puertas</label>
+          <label><input type="checkbox" id="kms">Kilometros</label>
+          <label><input type="checkbox" id="potencia">Potencia</label>
+        </div>
+      </div>
+    </div>
+    <!-- <label><input type="checkbox" id="foto">Foto</label>-->
+  </div>
+  <div id="spinner-container"></div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-auto mt-5">
+        <div id="divLista">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <fieldset class="border p-2">
+          <legend class="w-auto">Seccion de indicadores</legend>
+          <label for="operacion">Seleccionar Transaccion:</label>
+          <select class="row-md-5 dopdown" name="operacion" id="filtroOperacion">
+            <option selected="true" disabled="disabled" value="todo">Seleccione</option>
+            <option value="venta">Venta</option>
+            <option value="alquiler">Alquiler</option>
+            <option value="permuta">Permuta</option>
+          </select>
+          <label for="tipoOper">Seleccionar Indicador:</label>
+          <select class="row-md-5" name="operacion" id="filtroIndicador">
+            <option selected="true" disabled="disabled" value="todo">Seleccione</option>
+            <option value="promedio">Promedio</option>
+            <option value="minimo">Minimo</option>
+            <option value="maximo">Máximo</option>
+          </select>
+          <div id="resultados" class="row justify-content-center ">
+            <label for="resultado" class="col-sm-3 margin-r">Resultado</label>
+            <input id="outResultado" class="col-md-3" type="text" disabled value="" placeholder="resultado">
+          </div>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  <footer id="footer">
+    <nav>
+      <ul>
+        <li><a href="#">Nosotros</a></li>
+        <li><a href="#">Anuncios</a></li>
+        <li><a href="#">Blog</a></li>
+        <li><a href="#">Contacto</a></li>
       </ul>
       <p>Todos los derechos reservados <date>2020</date> &copy;</p>
-      </nav>
+    </nav>
   </footer>
-  </body>
+</body>
+
 </html>
